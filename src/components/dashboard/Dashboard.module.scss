@@ -1,0 +1,1429 @@
+// Variables
+$primary-color: #3b82f6;
+$secondary-color: #10b981;
+$danger-color: #ef4444;
+$warning-color: #f59e0b;
+$text-primary: #1e293b;
+$text-secondary: #64748b;
+$bg-light: #f8fafc;
+$border-color: #e2e8f0;
+
+// Mixins
+@mixin card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Dashboard Layout
+.dashboardContainer {
+    display: flex;
+    min-height: 100vh;
+}
+
+// Sidebar
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    z-index: 1000;
+
+    .logoSection {
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+
+        h2 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    .navigation {
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                margin-bottom: 8px;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    padding: 12px 16px;
+                    color: rgba(255, 255, 255, 0.7);
+                    background: transparent;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 0.95rem;
+                    font-weight: 500;
+                    text-align: left;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+
+                    i {
+                        margin-right: 12px;
+                        font-size: 1.1rem;
+                        width: 20px;
+                        text-align: center;
+                    }
+
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        color: white;
+                        transform: translateX(5px);
+                    }
+
+                    &.active {
+                        background: $primary-color;
+                        color: white;
+                        box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+
+                        &:hover {
+                            transform: none;
+                            background: darken($primary-color, 5%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+// Main Content
+.mainContent {
+    margin-left: 280px;
+    flex: 1;
+    background: $bg-light;
+    min-height: 100vh;
+
+    .header {
+        background: white;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $border-color;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+
+        .searchBar {
+            position: relative;
+
+            i {
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $text-secondary;
+            }
+
+            input {
+                padding: 10px 12px 10px 38px;
+                border: 1px solid $border-color;
+                border-radius: 8px;
+                width: 300px;
+                font-size: 0.95rem;
+                transition: all 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+                }
+            }
+        }
+
+        .userSection {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            span {
+                font-weight: 500;
+                color: $text-primary;
+            }
+
+            .logoutButton {
+                padding: 8px 16px;
+                background: $danger-color;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                i {
+                    font-size: 1.1rem;
+                }
+
+                &:hover {
+                    background: darken($danger-color, 10%);
+                    transform: translateY(-1px);
+                }
+            }
+        }
+    }
+
+    .content {
+        padding: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+// Manager Container Styles
+.managerContainer {
+    @include card;
+    padding: 24px;
+
+    h2 {
+        font-size: 24px;
+        color: $text-primary;
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $border-color;
+    }
+
+    .managerContent {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 24px;
+    }
+}
+
+// Form Styles
+.formSection {
+    @include card;
+    padding: 24px;
+
+    h3 {
+        font-size: 18px;
+        color: $text-primary;
+        margin-bottom: 20px;
+    }
+
+    .formGroup {
+        margin-bottom: 16px;
+
+        label {
+            display: block;
+            font-weight: 500;
+            color: $text-primary;
+            margin-bottom: 8px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid $border-color;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+
+            &:focus {
+                outline: none;
+                border-color: $primary-color;
+                box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+            }
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+    }
+
+    .imagePreview {
+        text-align: center;
+        margin-bottom: 20px;
+
+        img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 4px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .imageInput {
+            display: none;
+        }
+
+        label {
+            cursor: pointer;
+            color: $primary-color;
+            font-weight: 500;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .submitButton {
+        width: 100%;
+        padding: 12px;
+        background: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: darken($primary-color, 10%);
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}
+
+// List Section Styles
+.listSection {
+    @include card;
+    padding: 24px;
+
+    h3 {
+        font-size: 18px;
+        color: $text-primary;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+// Member List Styles
+.memberList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .memberItem {
+        @include card;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border: 1px solid $border-color;
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .memberInfo {
+            flex: 1;
+
+            h4 {
+                color: $text-primary;
+                margin-bottom: 4px;
+            }
+
+            p {
+                color: $text-secondary;
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+
+            .contactInfo {
+                display: flex;
+                gap: 16px;
+                margin-top: 8px;
+
+                p {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    color: $text-secondary;
+
+                    i {
+                        color: $primary-color;
+                    }
+                }
+            }
+
+            .status {
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 0.85rem;
+                font-weight: 500;
+
+                &.active {
+                    background: rgba($secondary-color, 0.1);
+                    color: $secondary-color;
+                }
+
+                &.inactive {
+                    background: rgba($danger-color, 0.1);
+                    color: $danger-color;
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+
+            button {
+                padding: 8px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:first-child {
+                    background: $warning-color;
+                    color: white;
+
+                    &:hover {
+                        background: darken($warning-color, 10%);
+                    }
+                }
+
+                &:last-child {
+                    background: $danger-color;
+                    color: white;
+
+                    &:hover {
+                        background: darken($danger-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Account List Styles
+.accountList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .accountItem {
+        @include card;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid $border-color;
+
+        .accountInfo {
+            h4 {
+                color: $text-primary;
+                margin-bottom: 4px;
+            }
+
+            p {
+                color: $text-secondary;
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+
+                i {
+                    margin-right: 6px;
+                    color: $primary-color;
+                }
+            }
+
+            .role {
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 0.85rem;
+                font-weight: 500;
+
+                &.admin {
+                    background: rgba($primary-color, 0.1);
+                    color: $primary-color;
+                }
+
+                &.leader {
+                    background: rgba($secondary-color, 0.1);
+                    color: $secondary-color;
+                }
+
+                &.super_admin {
+                    background: rgba($warning-color, 0.1);
+                    color: $warning-color;
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+
+            button {
+                padding: 8px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:first-child {
+                    background: $warning-color;
+                    color: white;
+
+                    &:hover {
+                        background: darken($warning-color, 10%);
+                    }
+                }
+
+                &:last-child {
+                    background: $danger-color;
+                    color: white;
+
+                    &:hover {
+                        background: darken($danger-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Password Manager Styles
+.passwordContainer {
+    @include card;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 32px;
+
+    h2 {
+        font-size: 24px;
+        color: $text-primary;
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $border-color;
+        text-align: center;
+    }
+
+    .passwordContent {
+        .passwordForm {
+            .formGroup {
+                margin-bottom: 24px;
+                position: relative;
+
+                label {
+                    display: block;
+                    font-weight: 500;
+                    color: $text-primary;
+                    margin-bottom: 8px;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 12px 40px 12px 16px;
+                    border: 1px solid $border-color;
+                    border-radius: 8px;
+                    font-size: 0.95rem;
+                    transition: all 0.3s ease;
+
+                    &:focus {
+                        outline: none;
+                        border-color: $primary-color;
+                        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+                    }
+                }
+
+                .togglePassword {
+                    position: absolute;
+                    right: 12px;
+                    top: 38px;
+                    color: $text-secondary;
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+                    padding: 4px;
+
+                    &:hover {
+                        color: $text-primary;
+                    }
+                }
+
+                .passwordStrength {
+                    margin-top: 8px;
+                    height: 4px;
+                    background: $border-color;
+                    border-radius: 2px;
+                    overflow: hidden;
+
+                    .strengthBar {
+                        height: 100%;
+                        transition: all 0.3s ease;
+
+                        &.weak {
+                            width: 33.33%;
+                            background: $danger-color;
+                        }
+
+                        &.medium {
+                            width: 66.66%;
+                            background: $warning-color;
+                        }
+
+                        &.strong {
+                            width: 100%;
+                            background: $secondary-color;
+                        }
+                    }
+                }
+
+                .passwordHint {
+                    margin-top: 6px;
+                    font-size: 0.85rem;
+                    color: $text-secondary;
+                }
+            }
+
+            .submitButton {
+                width: 100%;
+                padding: 12px;
+                background: $primary-color;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+
+                i {
+                    font-size: 1.1rem;
+                }
+
+                &:hover {
+                    background: darken($primary-color, 10%);
+                    transform: translateY(-1px);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+
+                &:disabled {
+                    background: lighten($primary-color, 20%);
+                    cursor: not-allowed;
+                    transform: none;
+                }
+            }
+        }
+
+        .passwordRequirements {
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba($primary-color, 0.05);
+            border-radius: 8px;
+
+            h4 {
+                color: $text-primary;
+                margin-bottom: 12px;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                i {
+                    color: $primary-color;
+                }
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    color: $text-secondary;
+                    font-size: 13px;
+                    margin-bottom: 8px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+
+                    i {
+                        width: 16px;
+                        text-align: center;
+                    }
+
+                    &.valid {
+                        color: $secondary-color;
+
+                        i {
+                            color: $secondary-color;
+                        }
+                    }
+
+                    &.invalid {
+                        color: $text-secondary;
+
+                        i {
+                            color: $text-secondary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .successMessage {
+        text-align: center;
+        padding: 16px;
+        background: rgba($secondary-color, 0.1);
+        border-radius: 8px;
+        margin-top: 16px;
+        color: $secondary-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+
+    .errorMessage {
+        text-align: center;
+        padding: 16px;
+        background: rgba($danger-color, 0.1);
+        border-radius: 8px;
+        margin-top: 16px;
+        color: $danger-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+    .managerContent {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 80px;
+
+        .logoSection h2 {
+            display: none;
+        }
+
+        .navigation button {
+            justify-content: center;
+            padding: 12px;
+
+            i {
+                margin: 0;
+            }
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    .mainContent {
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 16px;
+
+        .searchBar input {
+            width: 100%;
+        }
+    }
+
+    .memberItem, .accountItem {
+        flex-direction: column;
+        text-align: center;
+
+        img {
+            margin: 0 auto;
+        }
+
+        .actions {
+            width: 100%;
+            justify-content: center;
+            margin-top: 16px;
+        }
+    }
+}
+
+// Responsive styles for password manager
+@media (max-width: 768px) {
+    .passwordContainer {
+        padding: 20px;
+        margin: 0 16px;
+
+        .passwordContent {
+            .passwordForm {
+                .formGroup {
+                    input {
+                        padding: 10px 36px 10px 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Members Manager Styles
+.managerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    h2 {
+        font-size: 24px;
+        color: $text-primary;
+        margin: 0;
+    }
+
+    .headerActions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        .searchBox {
+            position: relative;
+
+            i {
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $text-secondary;
+            }
+
+            input {
+                padding: 10px 12px 10px 38px;
+                border: 1px solid $border-color;
+                border-radius: 8px;
+                width: 300px;
+                font-size: 0.95rem;
+                transition: all 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+                }
+            }
+        }
+
+        .addButton {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: $primary-color;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            i {
+                font-size: 1rem;
+            }
+
+            &:hover {
+                background: darken($primary-color, 10%);
+                transform: translateY(-1px);
+            }
+        }
+    }
+}
+
+.tableContainer {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+
+    .membersTable {
+        width: 100%;
+        border-collapse: collapse;
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid $border-color;
+            white-space: nowrap;
+
+            &:first-child {
+                padding-left: 24px;
+            }
+
+            &:last-child {
+                padding-right: 24px;
+            }
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: $text-primary;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            color: $text-secondary;
+            font-size: 0.95rem;
+            vertical-align: middle;
+        }
+
+        tbody {
+            tr {
+                transition: background 0.3s ease;
+
+                &:hover {
+                    background: #f8fafc;
+                }
+            }
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+
+            &.active {
+                background: rgba($secondary-color, 0.1);
+                color: $secondary-color;
+            }
+
+            &.inactive {
+                background: rgba($danger-color, 0.1);
+                color: $danger-color;
+            }
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+
+            button {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 12px;
+                border: none;
+                border-radius: 6px;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                i {
+                    font-size: 1rem;
+                }
+
+                &.editButton {
+                    background: $warning-color;
+                    color: white;
+
+                    &:hover {
+                        background: darken($warning-color, 10%);
+                    }
+                }
+
+                &.deleteButton {
+                    background: $danger-color;
+                    color: white;
+
+                    &:hover {
+                        background: darken($danger-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+
+    .loading, .emptyState {
+        text-align: center;
+        padding: 40px;
+        color: $text-secondary;
+
+        i {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+// Modal Styles
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    .modalContent {
+        background: white;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 24px;
+        position: relative;
+
+        .modalHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid $border-color;
+
+            h3 {
+                font-size: 20px;
+                color: $text-primary;
+                margin: 0;
+            }
+
+            .closeButton {
+                background: none;
+                border: none;
+                color: $text-secondary;
+                cursor: pointer;
+                font-size: 20px;
+                padding: 4px;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: $danger-color;
+                }
+            }
+        }
+
+        .formRow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .formGroup {
+            margin-bottom: 20px;
+
+            label {
+                display: block;
+                font-weight: 500;
+                color: $text-primary;
+                margin-bottom: 8px;
+            }
+
+            input, select {
+                width: 100%;
+                padding: 10px 12px;
+                border: 1px solid $border-color;
+                border-radius: 8px;
+                font-size: 0.95rem;
+                transition: all 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+                }
+            }
+        }
+
+        .activitiesTags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+
+            .activityTag {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                padding: 4px 8px;
+                background: #f1f5f9;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                color: $text-secondary;
+
+                button {
+                    background: none;
+                    border: none;
+                    color: $text-secondary;
+                    cursor: pointer;
+                    padding: 2px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        color: $danger-color;
+                    }
+                }
+            }
+        }
+
+        .modalActions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 24px;
+
+            button {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 16px;
+                border: none;
+                border-radius: 8px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                i {
+                    font-size: 1rem;
+                }
+
+                &.submitButton {
+                    background: $primary-color;
+                    color: white;
+
+                    &:hover {
+                        background: darken($primary-color, 10%);
+                    }
+
+                    &:disabled {
+                        background: lighten($primary-color, 20%);
+                        cursor: not-allowed;
+                    }
+                }
+
+                &.cancelButton {
+                    background: #f1f5f9;
+                    color: $text-secondary;
+
+                    &:hover {
+                        background: darken(#f1f5f9, 5%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+    .managerHeader {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+
+        .headerActions {
+            flex-direction: column;
+
+            .searchBox input {
+                width: 100%;
+            }
+        }
+    }
+
+    .tableContainer {
+        overflow-x: auto;
+
+        .membersTable {
+            th, td {
+                &:first-child {
+                    position: sticky;
+                    left: 0;
+                    background: inherit;
+                }
+            }
+        }
+    }
+
+    .modal .modalContent {
+        margin: 16px;
+        max-height: calc(100vh - 32px);
+
+        .formRow {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+// Overview Styles
+.overviewContainer {
+    .statisticsGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .statisticCard {
+        background: white;
+        padding: 24px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        .iconWrapper {
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+                font-size: 24px;
+            }
+        }
+
+        .statisticInfo {
+            flex: 1;
+
+            h3 {
+                font-size: 14px;
+                color: $text-secondary;
+                margin-bottom: 8px;
+                font-weight: 500;
+            }
+
+            .valueWrapper {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                .value {
+                    font-size: 24px;
+                    font-weight: 600;
+                    color: $text-primary;
+                }
+
+                .trend {
+                    font-size: 14px;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    &.positive {
+                        color: $secondary-color;
+                    }
+
+                    &.negative {
+                        color: $danger-color;
+                    }
+
+                    i {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .chartsSection {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+
+        .chartCard {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+            h3 {
+                font-size: 18px;
+                color: $text-primary;
+                margin-bottom: 20px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid $border-color;
+            }
+
+            .chartPlaceholder {
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: $bg-light;
+                border-radius: 8px;
+                color: $text-secondary;
+            }
+        }
+
+        .recentActivities {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+            h3 {
+                font-size: 18px;
+                color: $text-primary;
+                margin-bottom: 20px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid $border-color;
+            }
+
+            .activityList {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .activityItem {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    padding: 12px;
+                    border-radius: 8px;
+                    background: $bg-light;
+                    transition: transform 0.3s ease;
+
+                    &:hover {
+                        transform: translateX(5px);
+                    }
+
+                    i {
+                        font-size: 16px;
+                        color: $primary-color;
+                        background: rgba($primary-color, 0.1);
+                        padding: 10px;
+                        border-radius: 8px;
+                    }
+
+                    .activityInfo {
+                        flex: 1;
+
+                        p {
+                            font-size: 14px;
+                            color: $text-primary;
+                            margin: 0;
+                        }
+
+                        span {
+                            font-size: 12px;
+                            color: $text-secondary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Overview responsive styles
+@media (max-width: 1200px) {
+    .overviewContainer {
+        .chartsSection {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .overviewContainer {
+        .statisticsGrid {
+            grid-template-columns: 1fr;
+        }
+
+        .statisticCard {
+            padding: 20px;
+        }
+
+        .chartsSection {
+            gap: 16px;
+
+            .chartCard, .recentActivities {
+                padding: 20px;
+            }
+        }
+    }
+} 
