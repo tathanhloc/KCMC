@@ -1,13 +1,12 @@
 import React from 'react';
-import Footer from '../components/Footer';
+import HeaderComp from './HeaderComp.tsx';
+import MainContent from './MainContent.tsx';
 
-const HomePage: React.FC = () => {
-    return (
-        <div>
-            {/* Content */}
-            <Footer />
-        </div>
-    );
-};
-
-export default HomePage;
+export default function HomePage() {
+  return (
+    <>
+      <HeaderComp />
+      <MainContent />
+    </>
+  );
+}
