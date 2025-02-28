@@ -13,7 +13,7 @@ import ThienNguyen from './components/ThienNguyen';
 const mockUser: User = {
     id: 1,
     username: 'admin',
-    email: 'admin@example.com',
+    email: 'kcmc@vnkgu.edu.vn',
     role: 'super_admin',
     fullName: 'Admin'
 };
@@ -22,16 +22,13 @@ createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <ErrorBoundary>
             <Router>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/thiennguyen" element={<ThienNguyen    />} />
-                    <Route 
-                        path="/dashboard/*" 
-                        element={<Dashboard userRole={mockUser.role} userId={mockUser.id} />} 
-                    />
-                    <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
+            <Routes>
+                <Route path="/thiennguyen" element={<ThienNguyen />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/dashboard/*" element={<Dashboard userRole={mockUser.role} userId={mockUser.id} />} />
+                <Route path="*" element={<Navigate to="/thiennguyen" replace />} /> 
+            </Routes>
+
             </Router>
         </ErrorBoundary>
     </StrictMode>,
