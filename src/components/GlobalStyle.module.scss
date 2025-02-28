@@ -1,0 +1,820 @@
+$LogoFontSize: 0.875rem;
+$ThemeColor: white;
+$TextColor: black;
+$BtnTextColor: rgb(30 41 59);
+$BtnTextHoverColor: rgb(71 85 105);
+$LogoFontSize: 0.875rem;
+$LogoLineHeight: 1.25rem;
+$SemiBold: 600;
+$LogoFontWeight: 14px;
+$Font: 'Montserrat', sans-serif;
+$NormalFontSize: 1rem;
+$LinkTextColor: #1E40AF;
+$btnBGColor:white;
+$SlideBGColor: #123175;
+$Space: 30px;
+$SlickSpace: 100px;
+$textspace: 15px;
+$BodyBGColor: rgb(243 244 246);
+.NormalFont{
+font-family: $Font;
+font-size: $NormalFontSize;
+}
+
+body{
+    font-family: $Font;
+   background-color: $BodyBGColor;
+   overflow-x: hidden;
+
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.NavBar{
+    padding: 20px 5% 20px 5%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+background: white;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.2px);
+-webkit-backdrop-filter: blur(8.2px);
+    
+} 
+.LogoWrapper{
+   display: flex;
+}
+.CLBName{
+    font-size: $LogoFontSize;
+    line-height: $LogoLineHeight;
+    font-weight: $SemiBold; 
+    font-weight: $LogoFontWeight;
+    font-family: $Font;
+    color: black;
+    
+
+}
+.Logo{
+    width: 50px;
+    margin-right: 15px;
+}
+.IndexWrapper{
+    list-style: none;
+}
+.IndexLink{
+    display:inline;
+    margin-right: 20px;
+}
+a{
+
+    font-family: $Font;
+    font-size: $NormalFontSize;
+    text-decoration: none;
+    color: $LinkTextColor;
+    &:hover{
+        color:$BtnTextHoverColor;
+    }
+}
+.LinkBtnContainer{
+ background-color: $btnBGColor;
+ padding: 13px;
+ border: $btnBGColor;
+ border-radius: 50px;
+ color: $LinkTextColor;
+ cursor: pointer;
+ transition: 0.5s ease-in-out;
+
+ &:hover{
+    transition: 1s ease-out;
+    background-color: $LinkTextColor;
+    color: white;
+
+ }
+}
+
+h1{
+    font-family: $Font;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: white;
+    
+}
+h2{
+    font-family: $Font;
+    font-size: 1.125rem;
+    font-weight: bold;
+    font-weight:600;
+    
+}
+.SliderDescribe{
+    font-family: $Font;
+    font-size: $NormalFontSize;
+    text-decoration: none;
+    font-weight: 100;
+    color: white;
+}
+.SliderContainer{
+    max-width: 100%;
+
+}
+
+.wrapperSlider{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ width: 100%;
+ aspect-ratio: 16 / 9;
+ border-bottom: 8px solid #1E40AF;
+ 
+}
+.SliderTitle{
+    margin-bottom: $textspace;
+}
+.SliderDescribe{
+    margin-bottom: $textspace;
+}
+.SliderContainer{
+    
+    position: relative;
+    
+}
+.SlideImg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -20;
+    opacity: 50%;
+    object-fit: cover;
+
+
+}
+.AboutUsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ReactSlick{
+    background-color: $SlideBGColor;    
+    position: relative;
+    
+    
+}
+.AboutUsContainer{
+   padding: $SlickSpace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #f0f6ff, #f1f4ff, #f3f3ff, #f6f0ff, #faeeff);;
+}
+.AboutUsContainer h1 {
+    color: black;
+    max-width: 100%;
+    position: relative;
+}
+.AboutUsContainer .LinkBtnContainer{
+    background-image: linear-gradient(to right, #006fff, #5264ff, #7b55fd, #9d3ff6, #bb12eb);
+    color: white;
+    margin: $Space ;
+}
+
+
+.AboutUsCard h1 {
+    margin: $textspace;
+
+}
+.AboutUsCard p {
+    margin: $textspace;
+}
+.AboutUsIcon{
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    color: rgb(28, 109, 214);
+}
+.AboutUsCompWrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+    max-width: 90%;
+    justify-content: space-around;
+    margin-bottom: $Space;
+}
+p{
+    font-weight: 100;
+}
+.AboutUsTitle{
+    margin-bottom: calc($Space + 30px);
+}
+@mixin Card{
+    margin-right: 30px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  }
+.AboutUsCard{
+   @include Card;
+   margin-left: 30px;
+  }
+
+  .LeaderCard{
+    @include Card;
+    height: 100%;
+    
+  }
+  .LeaderCardWrapper{
+    max-width: 75%;
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    row-gap: 50px;
+    column-gap: 50px;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    height: 100%;
+    grid-template-rows: auto;
+
+  }
+.LeaderCardContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.LeaderImg{
+width: 200px;
+aspect-ratio: 1/1;
+border-radius: 50%;
+object-fit: cover;
+}
+.LeaderShip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: $SlickSpace 0 $Space 0;
+    
+}
+.LeaderShip h1 {
+    color: black;
+}
+
+.ActivityWrapper{
+    @include Card;
+    text-align: start;
+}
+.ActivityWrapper h2{
+    margin-bottom: $textspace;
+}
+.ActivitiesContainer{
+    margin-top: $SlickSpace;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+    max-width: 80%;
+    margin: $SlickSpace auto $SlickSpace auto;
+}
+.ActivityTitle{
+    margin-top: $SlickSpace;
+    color: black;
+    text-align: center;
+    
+}
+
+// Variables
+$primary-color: #4a90e2;
+$text-color: #333;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin input-styles {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+  }
+}
+
+// Styles
+.loginContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+    padding: 20px;
+}
+
+.loginBox {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.loginHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logoWrapper {
+    margin-bottom: 25px;
+    
+    .logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+    }
+}
+
+.welcomeText {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.subText {
+    color: #7f8c8d;
+    font-size: 16px;
+}
+
+.loginForm {
+    .inputGroup {
+        margin-bottom: 25px;
+    }
+
+    .inputWrapper {
+        position: relative;
+        
+        .icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95a5a6;
+            font-size: 18px;
+        }
+    }
+
+    .input {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: white;
+        
+        &:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #95a5a6;
+        }
+    }
+}
+
+.forgotPassword {
+    text-align: right;
+    margin-bottom: 25px;
+    
+    .forgotLink {
+        color: #3498db;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s ease;
+        
+        &:hover {
+            color: #2980b9;
+        }
+    }
+}
+
+.loginButton {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #3498db, #2980b9);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: linear-gradient(to right, #2980b9, #3498db);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Add animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loginBox {
+    animation: fadeIn 0.6s ease-out;
+}
+
+// Định nghĩa các biến màu sắc
+$primary-color: #4a90e2;
+$primary_gradient: linear-gradient(to right, #4a90e2, #3498db);
+$text-color: #2c3e50;
+$text-secondary: #7f8c8d;
+$background-color: #f9fafb;
+$card-background: #ffffff;
+$border-color: #e2e8f0;
+$success-color: #2ecc71;
+$warning-color: #f1c40f;
+$error-color: #e74c3c;
+$shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 6px 12px rgba(0, 0, 0, 0.1);
+$border-radius: 12px;
+$border-radius-sm: 8px;
+$transition: all 0.3s ease;
+
+.thienNguyenContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: $background-color;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.pageTitle {
+    text-align: center;
+    color: $text-color;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.searchContainer {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 30px;
+
+    .searchIcon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $text-secondary;
+    }
+
+    .searchInput {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: 2px solid $border-color;
+        border-radius: $border-radius-sm;
+        font-size: 1rem;
+        transition: $transition;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+    }
+}
+
+.donorList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.donorCard {
+    background-color: $card-background;
+    border-radius: $border-radius;
+    padding: 20px;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+    border: 1px solid $border-color;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: $shadow-md;
+    }
+
+    .donorDetails {
+        p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            
+            strong {
+                min-width: 140px;
+                color: $text-color;
+            }
+        }
+        
+        .iconWrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            color: $primary-color;
+        }
+    }
+}
+
+.loadingContainer, .errorContainer, .noResultsContainer {
+    text-align: center;
+    padding: 50px 20px;
+    color: $text-secondary;
+
+    .iconWrapper {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: $primary-color;
+        display: flex;
+        justify-content: center;
+    }
+    
+    p {
+        font-size: 1.1rem;
+    }
+}
+
+.ctaSection {
+    text-align: center;
+    background-color: #f1f5f9;
+    padding: 50px 20px;
+    margin-top: 40px;
+    border-radius: $border-radius;
+    background: linear-gradient(135deg, #f6f9fc, #eef2f7);
+    border: 1px solid $border-color;
+
+    h2 {
+        color: $text-color;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+    }
+
+    p {
+        color: $text-secondary;
+        max-width: 600px;
+        margin: 0 auto 30px;
+        font-size: 1.1rem;
+    }
+
+    .mainCTAButton {
+        padding: 15px 30px;
+        background: $primary-gradient;
+        color: white;
+        border: none;
+        border-radius: $border-radius-sm;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: $shadow-md;
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 5px;
+    
+    .pageButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 10px;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-sm;
+        background-color: $card-background;
+        color: $text-color;
+        font-weight: 500;
+        cursor: pointer;
+        transition: $transition;
+        
+        &:hover {
+            background-color: $primary-color;
+            color: white;
+        }
+        
+        &.active {
+            background-color: $primary-color;
+            color: white;
+            border-color: $primary-color;
+        }
+        
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            &:hover {
+                background-color: $card-background;
+                color: $text-color;
+            }
+        }
+    }
+}
+
+.statsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    
+    .statCard {
+        background-color: $card-background;
+        border-radius: $border-radius;
+        padding: 20px;
+        text-align: center;
+        box-shadow: $shadow-sm;
+        border: 1px solid $border-color;
+        
+        .statValue {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $primary-color;
+            margin-bottom: 5px;
+        }
+        
+        .statLabel {
+            color: $text-secondary;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+/* Modal Styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+    background-color: $card-background;
+    border-radius: $border-radius;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease;
+}
+
+.closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $text-secondary;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition;
+    
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: $text-color;
+    }
+}
+
+.modalTitle {
+    font-size: 1.5rem;
+    color: $text-color;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.modalInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.infoItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    
+    .infoIcon {
+        color: $primary-color;
+        flex-shrink: 0;
+        margin-top: 3px;
+    }
+    
+    strong {
+        color: $text-color;
+        font-weight: 600;
+        margin-right: 5px;
+    }
+}
+
+.confirmButton {
+    width: 100%;
+    padding: 12px;
+    background: $primary-gradient;
+    color: white;
+    border: none;
+    border-radius: $border-radius-sm;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
